@@ -1,3 +1,4 @@
 dist
 .idea
+.npmrc
 node_modules

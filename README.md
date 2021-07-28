@@ -25,3 +25,5 @@ Run the project!
 ```
 npm run dev
 ```
+
+> Warning, you need to put `.npmrc` file with FontAwesome credentials into your project root in order to correctly install all dependencies.
