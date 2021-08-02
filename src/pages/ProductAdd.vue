@@ -1,17 +1,14 @@
 <template>
   <div>
+
     <div>
-      <div class="mb-4">
-        <form @submit.prevent="search">
-          <input type="text" class="bg-gray-200 px-4 py-2 w-full border text-gray-600 border-gray-400 rounded" placeholder="Čiarový kód" v-model="ean">
-        </form>
-      </div>
-      <div class="bg-yellow-100 p-3 mb-4">
-        <p class="text-yellow-900">Pre zadaný čiarový kód nebola nájdená žiadna lokácia ani produkt</p>
-      </div>
+      <form @submit.prevent="search">
+        <input type="text" class="bg-gray-200 px-4 py-2 w-full border text-gray-600 border-gray-400 rounded" placeholder="Čiarový kód" v-model="ean">
+      </form>
     </div>
-    <div v-if="items.length">
-      <div v-for="(item, index) in items" class="flex items-center items-center bg-blue-50 mb-1 p-4">
+
+    <div v-if="items.length" class="my-4">
+      <div v-for="(item, index) in items" class="flex items-center items-center bg-blue-50 mb-2 p-4">
         <div class="mr-4">
           <span class="text-2xl">{{ index + 1 }}</span>
         </div>
@@ -21,14 +18,14 @@
           <i>{{ item.ean }}</i>
         </div>
         <div class="mr-4 flex">
-          <button :disabled="item.count < 2" @click="item.count--" class="disabled:opacity-50">
+          <button :disabled="item.count < 2" @click="item.count -= 1" class="disabled:opacity-50">
           <span class="fa-stack" style="vertical-align: top;">
             <i class="far fa-circle fa-stack-2x"></i>
             <i class="fas fa-minus fa-stack-1x"></i>
           </span>
           </button>
           <input type="text" v-model="item.count" class="w-10 mx-2 text-center">
-          <button @click="item.count++">
+          <button @click="item.count += 1">
           <span class="fa-stack" style="vertical-align: top;">
             <i class="far fa-circle fa-stack-2x"></i>
             <i class="fas fa-plus fa-stack-1x"></i>
@@ -41,11 +38,17 @@
           </button>
         </div>
       </div>
-      <button @click="window.console.log('Pridaj položky')"
-              class="mt-4 mb-4 rounded bg-blue-500 hover:bg-blue-700 text-white p-4">
-        Pridat {{ items.length }} položiek
-      </button>
     </div>
+
+    <button v-if="items.length" @click="window.console.log('Pridaj položky')"
+            class="my-2 block text-center bg-blue-400 hover:bg-blue-600 text-white w-full p-2">
+      Pridať {{ items.length }} položiek
+    </button>
+
+    <router-link :to="'/location'" class="block text-center bg-black text-white w-full p-2">
+      Naspäť na lokáciu
+    </router-link>
+
   </div>
 </template>
 
@@ -59,19 +62,19 @@ export default {
           id: 1,
           ean: '123456746413407',
           title: 'MYDORI S-MYDORI MC W SNEAKERS',
-          count: 3,
+          count: 1,
         },
         {
           id: 2,
           ean: '123456746413407',
           title: 'ASTICO S-ASTICO MID CUT SNEAKE',
-          count: 10,
+          count: 1,
         },
         {
           id: 3,
           ean: '123456746413407',
           title: 'MYDORI S-MYDORI LC W SNEAKERS',
-          count: 6,
+          count: 1,
         },
         {
           id: 4,
@@ -83,7 +86,7 @@ export default {
           id: 5,
           ean: '123456746413407',
           title: 'KONBA D-KONBA CB BOOTS',
-          count: 14,
+          count: 1,
         },
       ]
     }

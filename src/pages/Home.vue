@@ -2,10 +2,11 @@
   <div>
     <div class="mb-4">
       <form @submit.prevent="search">
-        <input type="text" class="bg-gray-200 px-4 py-2 w-full border text-gray-600 border-gray-400 rounded" placeholder="Naskenuj čiarový kód" v-model="ean" autofocus>
+        <input type="text" class="bg-gray-200 px-4 py-2 w-full border text-gray-600 border-gray-400 rounded"
+               ref="ean" placeholder="Naskenuj čiarový kód" v-model="ean" @blur="focusInput">
       </form>
     </div>
-    <div v-if="notFound" class="bg-yellow-100 p-3 mb-4">
+    <div v-if="notFound" class="bg-yellow-100 p-4 mb-4">
       <p class="text-yellow-900">Pre zadaný čiarový kód nebola nájdená žiadna lokácia ani produkt</p>
     </div>
   </div>
@@ -19,7 +20,13 @@ export default {
       notFound: false
     }
   },
+  mounted() {
+    this.focusInput();
+  },
   methods: {
+    focusInput() {
+      this.$refs.ean.focus();
+    },
     search() {
       switch(parseInt(this.ean)) {
         case 1:
