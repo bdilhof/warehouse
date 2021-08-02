@@ -46,7 +46,8 @@
     </button>
 
     <router-link :to="'/location'" class="block text-center bg-black text-white w-full p-2">
-      Naspäť na lokáciu
+      <font-awesome-icon icon="arrow-left" />
+      <span>Naspäť</span>
     </router-link>
 
   </div>
