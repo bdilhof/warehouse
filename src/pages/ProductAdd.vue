@@ -13,28 +13,21 @@
           <span class="text-2xl">{{ index + 1 }}</span>
         </div>
         <div class="mr-4 flex-grow overflow-ellipsis overflow-hidden whitespace-nowrap">
-          <b>{{ item.title }}</b>
-          <br>
-          <i>{{ item.ean }}</i>
+          <span class="block font-bold">{{ item.title }}</span>
+          <span class="block italic">{{ item.ean }}</span>
         </div>
         <div class="mr-4 flex">
-          <button :disabled="item.count < 2" @click="item.count -= 1" class="disabled:opacity-50">
-          <span class="fa-stack" style="vertical-align: top;">
-            <i class="far fa-circle fa-stack-2x"></i>
-            <i class="fas fa-minus fa-stack-1x"></i>
-          </span>
+          <button :disabled="item.count < 2" @click="item.count -= 1" class="bg-blue-500 p-2 text-white font-bold rounded-l">
+            <font-awesome-icon icon="minus" />
           </button>
-          <input type="text" v-model="item.count" class="w-10 mx-2 text-center">
-          <button @click="item.count += 1">
-          <span class="fa-stack" style="vertical-align: top;">
-            <i class="far fa-circle fa-stack-2x"></i>
-            <i class="fas fa-plus fa-stack-1x"></i>
-          </span>
+          <input type="text" v-model="item.count" class="w-10 border-t border-b border-blue-500 text-center">
+          <button @click="item.count += 1" class="bg-blue-500 p-2 text-white font-bold rounded-r">
+            <font-awesome-icon icon="plus" />
           </button>
         </div>
         <div>
           <button @click="items.splice(index, 1);" class="bg-red-500 rounded p-2 text-white font-bold">
-            <i class="fas fa-trash-alt"></i>
+            <font-awesome-icon icon="trash-alt" />
           </button>
         </div>
       </div>
