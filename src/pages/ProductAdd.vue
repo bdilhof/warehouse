@@ -7,8 +7,8 @@
       </form>
     </div>
 
-    <div v-if="items.length" class="flex flex-col space-y-2 mb-4">
-      <div v-for="(item, index) in items" class="flex items-center items-center bg-blue-50 p-4">
+    <transition-group v-if="items.length" name="list" tag="div" class="flex flex-col space-y-2 mb-4">
+      <div v-for="(item, index) in items" v-bind:key="item" class="flex items-center items-center bg-blue-50 p-4">
         <div class="mr-4">
           <span class="text-2xl">{{ index + 1 }}</span>
         </div>
@@ -31,7 +31,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </transition-group>
 
     <button v-if="items.length" @click="addItems"
             class="my-4 block text-center bg-blue-400 hover:bg-blue-600 text-white w-full p-2">
@@ -45,6 +45,16 @@
 
   </div>
 </template>
+
+<style scoped>
+.list-enter-active, .list-leave-active {
+  transition: all .5s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+</style>
 
 <script>
 export default {
