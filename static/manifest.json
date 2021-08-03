@@ -1,6 +1,6 @@
 {
-  "short_name": "Vermont PWA",
-  "name": "Vermont PWA",
+  "short_name": "Vermont",
+  "name": "Vermont Warehouse",
   "icons": [
     {
       "src": "/icons/512.png",
@@ -8,7 +8,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/?utm_source=a2hs",
+  "start_url": "https://warehouse.vermont.eu",
   "background_color": "#FFFFFF",
   "display": "standalone",
   "scope": "/",

@@ -6,7 +6,7 @@
           <th class="text-left p-2">ID</th>
           <th class="text-left p-2">Artikel</th>
           <th class="text-left p-2">EAN</th>
-          <th class="text-left p-2">Kusov</th>
+          <th class="text-left p-2">Na sklade</th>
         </tr>
       </thead>
       <tbody>
@@ -14,12 +14,12 @@
           <td class="p-2">{{ item.id }}</td>
           <td class="p-2">{{ item.title }}</td>
           <td class="p-2">{{ item.ean }}</td>
-          <td class="p-2">{{ item.count }}</td>
+          <td class="p-2">{{ item.count }} ks</td>
         </tr>
       </tbody>
     </table>
-    <div v-else class="bg-red-100">
-      <p>No data</p>
+    <div v-else class="mb-4">
+      <p>Žiadne produkty</p>
     </div>
     <router-link :to="'/location'" class="block text-center bg-black text-white w-full p-2 mb-2">
       <font-awesome-icon icon="arrow-left" />
