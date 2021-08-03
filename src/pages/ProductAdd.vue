@@ -3,12 +3,12 @@
 
     <div class="mb-4">
       <form @submit.prevent="search">
-        <input type="text" class="bg-gray-200 px-4 py-2 w-full border text-gray-600 border-gray-400 rounded" placeholder="Čiarový kód" v-model="ean">
+        <input type="text" class="bg-gray-200 px-4 py-2 w-full border text-gray-600 border-gray-400 rounded" placeholder="Čiarový kód">
       </form>
     </div>
 
     <transition-group v-if="items.length" name="list" tag="div" class="flex flex-col space-y-2 mb-4">
-      <div v-for="(item, index) in items" v-bind:key="item" class="flex items-center items-center bg-blue-50 p-4">
+      <div v-for="(item, index) in items" v-bind:key="item.id" class="flex items-center items-center bg-blue-50 p-4">
         <div class="mr-4">
           <span class="text-2xl">{{ index + 1 }}</span>
         </div>
@@ -62,26 +62,31 @@ export default {
       false: false,
       items: [
         {
+          id: 1,
           ean: '123456746413407',
           title: 'MYDORI S-MYDORI MC W SNEAKERS',
           count: 1,
         },
         {
+          id: 2,
           ean: '123456746413407',
           title: 'ASTICO S-ASTICO MID CUT SNEAKE',
           count: 1,
         },
         {
+          id: 3,
           ean: '123456746413407',
           title: 'MYDORI S-MYDORI LC W SNEAKERS',
           count: 1,
         },
         {
+          id: 4,
           ean: '123456746413407',
           title: 'SKB S-KBY STRIPE SNEAKERS',
           count: 1,
         },
         {
+          id: 5,
           ean: '123456746413407',
           title: 'KONBA D-KONBA CB BOOTS',
           count: 1,
